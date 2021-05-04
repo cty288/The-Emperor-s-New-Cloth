@@ -4,6 +4,7 @@ using DG.Tweening;
 using Fungus;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public static GameManager _instance;
@@ -74,5 +75,10 @@ public class GameManager : MonoBehaviour {
 
     public void DeleteACharacterFromList(string name) {
         characters.Remove(name);
+    }
+
+    public void Restart() {
+        print("xxx");
+        SceneManager.LoadScene(0);
     }
 }

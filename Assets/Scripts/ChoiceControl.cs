@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Fungus;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,17 +9,23 @@ using UnityEngine.UI;
 public class ChoiceControl : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPointerDownHandler {
     private Text text;
     private Color targetColor=new Color(0,0,255);
+
+    public Texture2D cursorNormal;
+    public Texture2D cursorSelected;
     public void OnPointerDown(PointerEventData eventData) {
         print("dwawda");
         targetColor = new Color(0, 58f/255f, 154f/255f);
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        targetColor = new Color(0, 247f/255f, 255f/255f);
-    }
+        targetColor = new Color(0, 150/255f, 255f/255f);
+        //Cursor.SetCursor(cursorSelected,new Vector2(0,0),CursorMode.Auto);
+    } 
+    
 
     public void OnPointerExit(PointerEventData eventData) {
-        targetColor = new Color(0, 0, 255/255);
+        targetColor = new Color(0, 73f/255f, 255/255);
+        //Cursor.SetCursor(cursorNormal, new Vector2(0, 0), CursorMode.Auto);
     }
 
     // Start is called before the first frame update
