@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class ChoiceControl : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPointerDownHandler {
     private Text text;
-    private Color targetColor=new Color(0,0,255);
+    private Color targetColor=new Color(163f/255f,1,1);
 
     public Texture2D cursorNormal;
     public Texture2D cursorSelected;
@@ -18,13 +18,13 @@ public class ChoiceControl : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        targetColor = new Color(0, 150/255f, 255f/255f);
+        targetColor = new Color(0, 250f/255f, 255f/255f);
         //Cursor.SetCursor(cursorSelected,new Vector2(0,0),CursorMode.Auto);
     } 
     
 
     public void OnPointerExit(PointerEventData eventData) {
-        targetColor = new Color(0, 73f/255f, 255/255);
+        targetColor = new Color(163f/255f, 1, 1);
         //Cursor.SetCursor(cursorNormal, new Vector2(0, 0), CursorMode.Auto);
     }
 
