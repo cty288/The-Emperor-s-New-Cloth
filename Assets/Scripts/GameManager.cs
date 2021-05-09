@@ -16,8 +16,10 @@ public class GameManager : MonoBehaviour {
 
     private int mentalDisplay;
     private int affinityDisplay;
+
     // Start is called before the first frame update
     void Start() {
+        DOTween.SetTweensCapacity(20000,50);
         _instance = this;
         mentalDisplay = flowchart.GetIntegerVariable("mental");
         affinityDisplay = flowchart.GetIntegerVariable("affinity");
@@ -44,7 +46,7 @@ public class GameManager : MonoBehaviour {
 
             affinityText.text = "Affinity: " + affinityDisplay;
             mentalText.text = "Mental State: " + mentalDisplay;
-
+          
             if (affinityDisplay < 0) {
                 affinityText.DOColor(new Color(1, 0, 0), 0.2f);
             }
