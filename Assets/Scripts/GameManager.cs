@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public string GetACharacter() {
-        int index = Random.Range(0, characters.Count);
+        int index = Random.Range(0, characters.Count-1); //except little kid
         string character = characters[index];
         //characters.RemoveAt(index);
         return character;
@@ -75,6 +75,8 @@ public class GameManager : MonoBehaviour {
     }
 
     public void DeleteACharacterFromList(string name) {
+        int index = GetIndexByName(name);
+        GameObject.Find("ControlCanvas").GetComponent<CharacterSelectionControl>().buttons.RemoveAt(index);
         characters.Remove(name);
     }
 

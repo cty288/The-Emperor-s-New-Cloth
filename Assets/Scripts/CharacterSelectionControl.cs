@@ -8,7 +8,7 @@ public class CharacterSelectionControl : MonoBehaviour {
     private GameObject buttonLeft;
     private GameObject buttonRight;
     
-    public Button[] buttons;
+    public List<Button> buttons;
     public Text leftName;
     public Text rightName;
     
