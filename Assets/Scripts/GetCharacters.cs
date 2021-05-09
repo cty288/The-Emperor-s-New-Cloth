@@ -24,6 +24,7 @@ public class GetCharacters : Command
             }
             GetFlowchart().SetStringVariable("char1", str1);
             GetFlowchart().SetStringVariable("char2", str2);
+            GameObject.Find("ControlCanvas").GetComponent<CharacterSelectionControl>().SetCharacters(str1,str2);
         }
         Continue();
  

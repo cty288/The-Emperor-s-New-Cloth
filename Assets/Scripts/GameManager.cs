@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour {
         _instance = this;
         mentalDisplay = flowchart.GetIntegerVariable("mental");
         affinityDisplay = flowchart.GetIntegerVariable("affinity");
+        
     }
 
     public string GetACharacter() {
@@ -80,5 +81,9 @@ public class GameManager : MonoBehaviour {
     public void Restart() {
         print("xxx");
         SceneManager.LoadScene(0);
+    }
+
+    public int GetIndexByName(string name) {
+        return characters.IndexOf(name);
     }
 }
