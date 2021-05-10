@@ -10,8 +10,16 @@ public class AddAffinityMental : Command {
     public int mentalAdded;
     public override void OnEnter()
     {
-        GameManager._instance.AddAffinityandMentalState(affinityAdded,mentalAdded);
+        GameManager._instance.InfoPanelDown();
+        GameManager._instance.PlayAddValueSound();
+        StartCoroutine(WaitASecond());
+       
         Continue();
 
+    }
+
+    IEnumerator WaitASecond() {
+        yield return new WaitForSeconds(1);
+        GameManager._instance.AddAffinityandMentalState(affinityAdded, mentalAdded);
     }
 }

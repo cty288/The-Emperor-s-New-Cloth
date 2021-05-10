@@ -11,9 +11,19 @@ public class GameManager : MonoBehaviour {
 
     public TMP_Text affinityText;
     public TMP_Text mentalText;
+    public GameObject valuePanel;
+
+    public GameObject affinityInfo;
+    public GameObject mentalInfo;
+    public GameObject hoverButton;
+
+    public bool panelDown = false;
+    public float panelUpTimer = 0;
     public List<string> characters;
     public Flowchart flowchart;
 
+    public AudioClip addValueSound;
+    public AudioClip clickSound;
     private int mentalDisplay;
     private int affinityDisplay;
 
@@ -40,40 +50,73 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (flowchart.GetBooleanVariable("showValues")) {
-            affinityText.gameObject.SetActive(true);
-            mentalText.gameObject.SetActive(true);
-
-            affinityText.text = "Affinity: " + affinityDisplay;
-            mentalText.text = "Mental State: " + mentalDisplay;
-          
-            if (affinityDisplay < 0) {
-                affinityText.DOColor(new Color(1, 0, 0), 0.2f);
-            }
-            else {
-                affinityText.DOColor(new Color(0, 0.6037736f, 0.147598f), 0.2f);
-            }
-
-            if (mentalDisplay < 0) {
-                mentalText.DOColor(new Color(1, 0, 0), 0.2f);
-            }
-            else {
-                mentalText.DOColor(new Color(0, 0.6037736f, 0.147598f), 0.2f);
-            }
+        if (Input.GetMouseButtonDown(0)) {
+            GetComponentInChildren<AudioSource>().Stop();
+            GetComponentInChildren<AudioSource>().clip = clickSound;
+            GetComponentInChildren<AudioSource>().Play();
+        }
+        if (flowchart.GetBooleanVariable("info")) {
+            InfoPanelDown();
+            affinityInfo.SetActive(true);
+            mentalInfo.SetActive(true);
         }
         else {
-            affinityText.gameObject.SetActive(false);
-            mentalText.gameObject.SetActive(false);
+            affinityInfo.SetActive(false);
+            mentalInfo.SetActive(false);
+            bool hover = RectTransformUtility.RectangleContainsScreenPoint(
+                valuePanel.GetComponent<RectTransform>(), Input.mousePosition, null);
+            bool value_button=  RectTransformUtility.RectangleContainsScreenPoint(
+                hoverButton.GetComponent<RectTransform>(), Input.mousePosition, null);
+            
+            if (panelDown) {
+                if (!hover && !value_button) {
+                    panelUpTimer += Time.deltaTime;
+                    if (panelUpTimer >= 5)
+                    {
+                        panelUpTimer = 0;
+                        panelDown = false;
+                        InfoPanelUp();
+                    }
+                }
+                else {
+                    panelUpTimer = 0;
+                }
+            }
+            else {
+                if (value_button) {
+                    InfoPanelDown();
+                }
+            }
         }
+
+
+        affinityText.text = affinityDisplay.ToString();
+        mentalText.text = mentalDisplay.ToString();
+      
+        if (affinityDisplay < 0) {
+            affinityText.DOColor(new Color(1, 0, 0), 0.2f);
+        }
+        else {
+            affinityText.DOColor(new Color(0, 1, 0), 0.2f);
+        }
+
+        if (mentalDisplay < 0) {
+            mentalText.DOColor(new Color(1, 0, 0), 0.2f);
+        }
+        else {
+            mentalText.DOColor(new Color(0, 1, 0), 0.2f);
+        }
+        
+
     }
 
     public void AddAffinityandMentalState(int aff, int ment) {
         flowchart.SetIntegerVariable("affinity",flowchart.GetIntegerVariable("affinity")+aff);
         flowchart.SetIntegerVariable("mental", flowchart.GetIntegerVariable("mental") + ment);
         DOTween.To(() => affinityDisplay, x => affinityDisplay = x, flowchart.GetIntegerVariable("affinity"),
-            0.2f);
+            1f);
         DOTween.To(() => mentalDisplay, x => mentalDisplay = x, flowchart.GetIntegerVariable("mental"),
-            0.2f);
+            1f);
     }
 
     public void DeleteACharacterFromList(string name) {
@@ -89,5 +132,25 @@ public class GameManager : MonoBehaviour {
 
     public int GetIndexByName(string name) {
         return characters.IndexOf(name);
+    }
+
+    public void InfoPanelDown() {
+        valuePanel.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-268, -40), 1);
+        panelDown = true;
+    }
+
+    public void InfoPanelUp() {
+        valuePanel.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-268, 45), 1);
+        panelDown = false;
+    }
+
+    public void PlayASoundOnce(AudioClip clip) {
+        GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().clip = clip;
+        GetComponent<AudioSource>().Play();
+    }
+
+    public void PlayAddValueSound() {
+        PlayASoundOnce(addValueSound);
     }
 }
