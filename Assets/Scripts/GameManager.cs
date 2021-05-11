@@ -94,17 +94,17 @@ public class GameManager : MonoBehaviour {
         mentalText.text = mentalDisplay.ToString();
       
         if (affinityDisplay < 0) {
-            affinityText.DOColor(new Color(1, 0, 0), 0.2f);
+            affinityText.DOColor(new Color(1, 203f/255f, 0), 1f);
         }
         else {
-            affinityText.DOColor(new Color(0, 1, 0), 0.2f);
+            affinityText.DOColor(new Color(0, 1, 0), 1f);
         }
 
         if (mentalDisplay < 0) {
-            mentalText.DOColor(new Color(1, 0, 0), 0.2f);
+            mentalText.DOColor(new Color(1, 203f/255f, 0), 1f);
         }
         else {
-            mentalText.DOColor(new Color(0, 1, 0), 0.2f);
+            mentalText.DOColor(new Color(0, 1, 0), 1f);
         }
         
 
