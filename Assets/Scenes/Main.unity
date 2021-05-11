@@ -55341,7 +55341,7 @@ GameObject:
   - component: {fileID: 1197915150}
   - component: {fileID: 1197915149}
   m_Layer: 0
-  m_Name: SoundEffects
+  m_Name: BGMPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
