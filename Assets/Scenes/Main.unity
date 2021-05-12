@@ -2368,12 +2368,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.506
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -6416,7 +6416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: -554.9085, y: -2358.2273}
+  scrollPos: {x: -2155.7185, y: -208.42989}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
@@ -6428,9 +6428,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 712834173}
+  - {fileID: 712834085}
   selectedCommands:
-  - {fileID: 712834412}
+  - {fileID: 712834124}
   variables:
   - {fileID: 712833724}
   - {fileID: 712833788}
@@ -19459,10 +19459,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 491
   indentLevel: 0
-  storyText: "                             {color=red}{b}    There is a little kid.{/b}{/color}\nHe
-    was running around.\r\nHis mother told him to stay home because it would be chaotic
-    out there.\r\nHowever, he was curious why people all gathered towards the emperor\u2019s
-    palace.\r\n"
+  storyText: "                             {color=yellow}{b}    There is a little
+    kid.{/b}{/color}\nHe was running around.\r\nHis mother told him to stay home
+    because it would be chaotic out there.\r\nHowever, he was curious why people
+    all gathered towards the emperor\u2019s palace.\r\n"
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -19964,7 +19964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 2224
   indentLevel: 0
-  storyText: But he has nothing on at all
+  storyText: But he has nothing on at all!
   description: 
   character: {fileID: 1621105387}
   portrait: {fileID: 21300000, guid: 0217f8ef243cc7144bf80b44fad0019d, type: 3}
@@ -20727,7 +20727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 2222
   indentLevel: 0
-  storyText: Good heavens! listen to the voice of an innocent child
+  storyText: Good heavens! listen to the voice of an innocent child!
   description: 
   character: {fileID: 1063178705}
   portrait: {fileID: 21300000, guid: add4882d6a22bec4bb9c3c47a91c935f, type: 3}
@@ -53690,7 +53690,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.23498535}
+  m_AnchoredPosition: {x: 0, y: -0.23504639}
   m_SizeDelta: {x: -0.60009766, y: -0.4699707}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &825583851
@@ -59855,8 +59855,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 994.511, y: 408.01465}
+  m_AnchoredPosition: {x: -2531.2815, y: 2012.0262}
+  m_SizeDelta: {x: 29269.98, y: 16467.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!111 &1699429098
 Animation:
