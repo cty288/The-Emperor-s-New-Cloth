@@ -18,6 +18,7 @@ public class MoralTextControl : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        
         if (flowchart.GetBooleanVariable("showMoral")) {
             moralBG.DOFade(1, 5f);
 
@@ -27,7 +28,16 @@ public class MoralTextControl : MonoBehaviour {
                 moralText.DOFade(1, 8f);
                 restartButton.SetActive(true);
             }
-            
+
+            Image[] buttonImages = restartButton.GetComponentsInChildren<Image>();
+            Text buttonText = restartButton.GetComponentInChildren<Text>();
+
+            foreach (Image ima in buttonImages) {
+                ima.DOFade(1, 5f);
+            }
+
+            buttonText.DOFade(1, 5);
+
         }
         else {
             moralBG.DOFade(0,2) ;

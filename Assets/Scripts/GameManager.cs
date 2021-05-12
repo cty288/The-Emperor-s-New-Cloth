@@ -6,9 +6,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum GameState {
+    menu,
+    inGame,
+    end
+}
 public class GameManager : MonoBehaviour {
     public static GameManager _instance;
-
+    public GameState gameState = GameState.inGame;
     public TMP_Text affinityText;
     public TMP_Text mentalText;
     public GameObject valuePanel;
@@ -24,12 +29,17 @@ public class GameManager : MonoBehaviour {
 
     public AudioClip addValueSound;
     public AudioClip clickSound;
+
+    public Animation menuBlackScreen;
+    public GameObject menuGameObject;
+
     private int mentalDisplay;
     private int affinityDisplay;
 
     // Start is called before the first frame update
     void Start() {
         DOTween.SetTweensCapacity(20000,50);
+       gameState = GameState.menu;
         _instance = this;
         mentalDisplay = flowchart.GetIntegerVariable("mental");
         affinityDisplay = flowchart.GetIntegerVariable("affinity");
@@ -71,7 +81,7 @@ public class GameManager : MonoBehaviour {
             if (panelDown) {
                 if (!hover && !value_button) {
                     panelUpTimer += Time.deltaTime;
-                    if (panelUpTimer >= 5)
+                    if (panelUpTimer >= 3)
                     {
                         panelUpTimer = 0;
                         panelDown = false;
@@ -105,6 +115,10 @@ public class GameManager : MonoBehaviour {
         }
         else {
             mentalText.DOColor(new Color(0, 1, 0), 1f);
+        }
+
+        if (flowchart.GetBooleanVariable("showMoral")) {
+            gameState = GameState.end;
         }
         
 
@@ -152,5 +166,23 @@ public class GameManager : MonoBehaviour {
 
     public void PlayAddValueSound() {
         PlayASoundOnce(addValueSound);
+    }
+
+    public void OnPlayButtonClicked() {
+        menuBlackScreen.Play();
+        StartCoroutine(menuBlackScreEnumerator());
+        BGMPlayerControl._instance.StopSound();
+    }
+
+    IEnumerator menuBlackScreEnumerator() {
+        yield return new WaitForSeconds(1f);
+        menuGameObject.SetActive(false);
+        yield return new WaitForSeconds(0.15f);
+        gameState = GameState.inGame;
+        flowchart.gameObject.SetActive(true);
+    }
+
+    public void OnExitButtonClicked() {
+        Application.Quit();
     }
 }
